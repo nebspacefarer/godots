@@ -99,7 +99,7 @@ func _update_project_dir() -> void:
 			_project_path_line_edit.text = (Config.DEFAULT_PROJECTS_PATH.ret() as String).path_join(_format_dir_name(new_name))
 	else:
 		if _create_folder_check.button_pressed:
-			_project_path_line_edit.text = _project_path_line_edit.text.substr(0, _project_path_line_edit.text.rfind("/") + 1) + new_name
+			_project_path_line_edit.text = _project_path_line_edit.text.substr(0, _project_path_line_edit.text.rfind("/") + 1) + _format_dir_name(new_name)
 	_validate()
 
 
