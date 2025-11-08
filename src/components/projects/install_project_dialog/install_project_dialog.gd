@@ -30,7 +30,10 @@ func _ready() -> void:
 	_create_folder_failed_dialog.add_child(_create_folder_failed_label)
 	
 	confirmed.connect(func() -> void:
-		if _create_project_dir() == OK:
+		if _create_folder_check.button_pressed:
+			if _create_project_dir() == OK:
+				_successfully_confirmed.emit()
+		else:
 			_successfully_confirmed.emit()
 	)
 	_project_name_edit.text_changed.connect(func(_arg: String) -> void:
