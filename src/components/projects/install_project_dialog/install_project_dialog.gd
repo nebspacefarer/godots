@@ -56,6 +56,7 @@ func _ready() -> void:
 	)
 	_file_dialog.dir_selected.connect(func(dir: String) -> void: 
 		_project_path_line_edit.text = dir
+		_set_custom_folder = true
 		_validate()
 	)
 	
@@ -96,6 +97,9 @@ func _update_project_dir() -> void:
 			_project_path_line_edit.text = Config.DEFAULT_PROJECTS_PATH.ret() as String
 		else:
 			_project_path_line_edit.text = (Config.DEFAULT_PROJECTS_PATH.ret() as String).path_join(_format_dir_name(new_name))
+	else:
+		if _create_folder_check.button_pressed:
+			_project_path_line_edit.text = _project_path_line_edit.text.substr(0, _project_path_line_edit.text.rfind("/") + 1) + new_name
 	_validate()
 
 
