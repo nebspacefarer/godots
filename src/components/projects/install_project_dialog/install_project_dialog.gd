@@ -55,7 +55,7 @@ func _ready() -> void:
 		_file_dialog.popup_centered_ratio(0.5)
 	)
 	_file_dialog.dir_selected.connect(func(dir: String) -> void: 
-		_project_path_line_edit.text = dir
+		_project_path_line_edit.text = dir + "/"
 		_set_custom_folder = true
 		_validate()
 	)
